@@ -20,14 +20,14 @@
 <!--     * A successful VM Escaping Attack grants the attacker with access to the hypervisor/Host OS.  -->
 <!--     * Remapping Attack, Double-mapping Attack or VM Memory Isolation Destruction Attack may be conducted  -->
 
-**HyperMI**, as shown in Figure 1, consists of three parts: the modified host OS kernel (not trusted), the HyperMI World and the Swith Gate.     
+**HyperMI**, as shown in Figure 1, consists of three parts: the modified host OS kernel (not trusted), the HyperMI World and the Switch Gate.     
 
 ![HyperMI Architecture](./doc/pic/architecture.png "HyperMI Architecture")
 
 ## The Modified Host OS Kernel ##
-Since the hypervisor/Host OS is not trusted by us, access to some critical data structures must be restrictd. The following modifications were made to the Host OS Kernel by **HyperMI**
+Since the hypervisor/Host OS is not trusted by us, access to some critical data structures must be restricted. The following modifications were made to the Host OS Kernel by **HyperMI**
 1. Virtual Machines Control Structure (VMCS) and Extended Page Table (EPT) are removed from the original kernel. 
-2. Funtions which are relavant to Control Registers (CR0, CR3, CR4), VMCS, EPT, DMA are hooked. 
+2. Functions which are relevant to Control Registers (CR0, CR3, CR4), VMCS, EPT, DMA are hooked. 
 
 ## The HyperMI World ##
 The HyperMI World is the *secure* and *in-kernel isolated* execution environment to host important data structures and security tools. **HyperMI** has full capability of monitoring the Hypervisor and protecting critical data structures. Currently, the HyperMI world hosts the following data structures and security tools: 
@@ -45,9 +45,9 @@ EPT behaviors are controlled by the three control bits in PPTT: PFN(Physical Pag
 The Switch Gate is the only interface between the Normal World (the compromised hypervisor/Host OS Kernel) and the HyperMI world. Figure 2 shows the detail of this Switch Gate.    
 ![The Switch Gate](./doc/pic/the-switch-gate.png "The Switch Gate")   
 
-The Switch Gate may be samilar with the Switch Gate proposed by [SKEE](https://wenboshen.org/assets/papers/skee-ndss16.pdf) at the first look. But, there are several differents between them: 
+The Switch Gate may be similar with the Switch Gate proposed by [SKEE](https://wenboshen.org/assets/papers/skee-ndss16.pdf) at the first look. But, there are several differences between them: 
 1. **HyperMI** implemented the Switch Gate in x86\_64 environment, while SKEE just implemented their work based on ARM v7 and ARM v8. 
-2. **HyperMI** implemented the Swith Gate by using a new kernel page table hosted in the HyperMI world, the access to the original kernel page table are restrictd and redirected to the kernel page table in the HyperMI world. This approach is totally different from the approach adopted by SKEE. 
+2. **HyperMI** implemented the Switch Gate by using a new kernel page table hosted in the HyperMI world, the access to the original kernel page table are restricted and redirected to the kernel page table in the HyperMI world. This approach is totally different from the approach adopted by SKEE. 
 
 
 # Compilation and Installation #
@@ -55,7 +55,7 @@ The Switch Gate may be samilar with the Switch Gate proposed by [SKEE](https://w
 ## Compilation and Installation Steps ##
 
 The compilation and installation process of HyperMI contains two step: 
-1. compile and install the modified linux kernel 
+1. Compile and install the modified linux kernel 
     ```shell 
     git clone https://github.com/DCSec/HyperMI.git 
     cd HyperMI 
@@ -63,7 +63,7 @@ The compilation and installation process of HyperMI contains two step:
     cd /usr/src/linux-4.4.1
     make oldcofigure && make modules && make modules_install&& make install 
     ```
-2. compile and install SecureVM 
+2. Compile and install SecureVM 
     ```shell 
     cd home/to/HyperMI
     cd src/SecureVM
