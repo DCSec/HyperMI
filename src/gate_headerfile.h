@@ -1,0 +1,29 @@
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/init.h>
+//编写内核模块所需要的一些头文件，比如模块注册和注销的宏等
+#include <linux/sched.h>
+#include <linux/fs.h>
+#include <linux/file.h>
+#include <linux/fs_struct.h>
+#include <linux/fdtable.h>
+#include <linux/string.h>
+#include <linux/mm.h>
+#include <linux/syscalls.h>
+#include <linux/list.h>
+#include <linux/jiffies.h>
+#include <linux/cdev.h>
+#include <asm/unistd.h>
+#include <asm/uaccess.h>
+#include <linux/path.h>
+#include <linux/time.h>
+#include <linux/stat.h>
+#include <net/sock.h>
+#include <net/inet_sock.h>
+#include <asm/cpufeature.h>
+#include <linux/kprobes.h>
+
+#include <asm/debugreg.h>
+#include <asm/siginfo.h>
+#include <asm/traps.h>
+#include <asm/trace/exceptions.h>
