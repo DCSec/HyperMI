@@ -10,7 +10,13 @@
 
 
 # Introduction # 
-**HyperMI** is a *secure* and *in-kernel isolated* execution environment to protect Virtual Machines (VMs) against the compromised hypervisor. Currently, we designed and implemented **HyperMI** on the KVM-based cloud computing environment.   
+**HyperMI** is a *secure* and *in-kernel isolated* execution environment to protect Virtual Machines (VMs) against the compromised hypervisor. 
+<!-- **HyperMI** can resist on the following kinds of attacks:  -->
+<!-- 1. Attacks from the inner attackers. Inner attacker can use cloud environment management tools with no limitation, thus, malicious code can be imported into the hypervisor/Host OS kernel with no limitation. The security of the guest VMs can no longer be guaranteed once the malicious code are injected.  -->
+<!-- 2. Attacks from the outside attackers.  -->
+<!--     * A successful VM Escaping Attack grants the attacker with access to the hypervisor/Host OS.  -->
+<!--     * Remapping Attack, Double-mapping Attack or VM Memory Isolation Destruction Attack may be conducted  -->
+Currently, we designed and implemented **HyperMI** on the KVM-based cloud computing environment.   
 
 **HyperMI**, as shown in Figure 1, consists of three parts: the modified host OS kernel (not trusted), the HyperMI World and the Swith Gate.     
 
@@ -39,7 +45,7 @@ The Switch Gate is the only interface between the Normal World (the compromised 
 
 The Switch Gate may be samilar with the Switch Gate proposed by [SKEE](https://wenboshen.org/assets/papers/skee-ndss16.pdf) at the first look. But, there are several differents between them: 
 1. **HyperMI** implemented the Switch Gate in x86\_64 environment, while SKEE just implemented their work based on ARM v7 and ARM v8. 
-2. **HyperMI** implemented the Swith Gate by using a new kernel page table hosted in the HyperMI world, the access to the original kernel page table are restrictd. This approach is totally different from the approach adopted by SKEE. 
+2. **HyperMI** implemented the Swith Gate by using a new kernel page table hosted in the HyperMI world, the access to the original kernel page table are restrictd and redirected to the kernel page table in the HyperMI world. This approach is totally different from the approach adopted by SKEE. 
 
 
 # Compilation and Installation #
