@@ -94,7 +94,7 @@ HyperMI requires a modified kernel to provide the *secure* and *in-kernel isolat
 # Acknowledgement #
 * This work has been pushlished in The 18th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom 2019). 
 <!-- For more information, please read:   -->
-* This work is supported by the National Key R&D Program of China. 
+<!-- * This work is supported by the National Key R&D Program of China.  -->
 
 
 
